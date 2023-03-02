@@ -1,0 +1,4 @@
+Flask==2.2.2
+ptvsd==4.3.2 # Required for debugging.
+google-cloud-datastore
+gunicorn==20.1.0
