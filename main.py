@@ -23,7 +23,7 @@ def get_client(project_id):
 client = get_client(project_id)
 
 
-@app.route('/', methods=['POST'])
+@app.route('/geo', methods=['POST'])
 def update_visitor_loc():
     tmp = str(request.environ.get('HTTP_X_FORWARDED_FOR'))
     client_ip, fwd_ip = tmp.split(",")
@@ -41,6 +41,21 @@ def update_visitor_loc():
     client.put(visitors_loc)
 
     return (json.dumps({"message": "Success"}), 200, CORS_HEADERS)
+
+
+@app.route('/')
+def hello():
+    """Return a friendly HTTP greeting."""
+    message = "It's running!"
+
+    """Get Cloud Run environment variables."""
+    service = os.environ.get('K_SERVICE', 'Unknown service')
+    revision = os.environ.get('K_REVISION', 'Unknown revision')
+
+    return render_template('index.html',
+                           message=message,
+                           Service=service,
+                           Revision=revision)
 
 
 if __name__ == '__main__':
