@@ -22,7 +22,7 @@ def get_client(project_id):
 client = get_client(project_id)
 
 
-@app.route('/geo', methods=['POST'])
+@app.route('/geo', methods=['POST', 'GET'])
 def update_visitor_loc():
     tmp = str(request.environ.get('HTTP_X_FORWARDED_FOR'))
     client_ip, fwd_ip = tmp.split(",")
