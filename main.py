@@ -38,14 +38,14 @@ def update_visitor_loc():
     # visitors_loc["client_ip"] = client_ip
     # client.put(visitors_loc)
 
-    return (json.dumps({"message": tmp1}), 200, CORS_HEADERS)
+    return ({"message": tmp1}), 200, CORS_HEADERS)
 
 
-@app.route('/')
+@ app.route('/')
 def hello():
     return "<p>Hello, World!</p>"
 
 
 if __name__ == '__main__':
-    server_port = os.environ.get('PORT', '8080')
-    app.run(debug=False, port=server_port, host='0.0.0.0')
+    server_port=os.environ.get('PORT', '8080')
+    app.run(debug = False, port = server_port, host = '0.0.0.0')
