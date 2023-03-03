@@ -27,7 +27,9 @@ def update_visitor_loc():
     tmp = str(request.environ.get('HTTP_X_FORWARDED_FOR'))
     # client_ip, fwd_ip = tmp.split(",")
 
-    tmp1 = str(request.environ.get('x-client-geo-location'))
+    tmp1 = str(request.environ.get('X-client-Geo-region'))
+    region = request.headers.get('X-client-Geo-region')
+    city = request.headers.get('X-client-Geo-city')
     # client_region, client_city = tmp1.split(",")
 
     # key_v = client.key('Visitors-loc')
@@ -38,7 +40,7 @@ def update_visitor_loc():
     # visitors_loc["client_ip"] = client_ip
     # client.put(visitors_loc)
 
-    return ({"message": tmp1}, 200, CORS_HEADERS)
+    return ({"region": region}, 200, CORS_HEADERS)
 
 
 @ app.route('/')
