@@ -27,7 +27,7 @@ def update_visitor_loc():
     tmp = str(request.environ.get('HTTP_X_FORWARDED_FOR'))
     client_ip, fwd_ip = tmp.split(",")
 
-    tmp1 = str(request.environ.get('X-Client-Geo-Location'))
+    tmp1 = str(request.environ.get('x-client-geo-location'))
     client_region, client_city = tmp1.split(",")
 
     # create entry in visitors-loc with client ip
