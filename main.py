@@ -22,10 +22,10 @@ def get_client(project_id):
 client = get_client(project_id)
 
 
-@app.route('/geo', methods=['POST', 'GET'])
+@app.route('/geo')
 def update_visitor_loc():
     tmp = str(request.environ.get('HTTP_X_FORWARDED_FOR'))
-    client_ip, fwd_ip = tmp.split(",")
+    # client_ip, fwd_ip = tmp.split(",")
 
     # tmp1 = str(request.environ.get('x-client-geo-location'))
     # client_region, client_city = tmp1.split(",")
@@ -38,7 +38,7 @@ def update_visitor_loc():
     # visitors_loc["client_ip"] = client_ip
     # client.put(visitors_loc)
 
-    return (json.dumps({"message": "Success"}), 200, CORS_HEADERS)
+    return (json.dumps({"message": tmp}), 200, CORS_HEADERS)
 
 
 @app.route('/')
