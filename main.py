@@ -27,17 +27,16 @@ def update_visitor_loc():
     tmp = str(request.environ.get('HTTP_X_FORWARDED_FOR'))
     client_ip, fwd_ip = tmp.split(",")
 
-    tmp1 = str(request.environ.get('x-client-geo-location'))
-    client_region, client_city = tmp1.split(",")
+    # tmp1 = str(request.environ.get('x-client-geo-location'))
+    # client_region, client_city = tmp1.split(",")
 
-    # create entry in visitors-loc with client ip
-    key_v = client.key('Visitors-loc')
-    visitors_loc = datastore.Entity(key_v)
-    visitors_loc["client_city"] = client_city
-    visitors_loc["client_region"] = client_region
-    visitors_loc["update_ts"] = datetime.now()
-    visitors_loc["client_ip"] = client_ip
-    client.put(visitors_loc)
+    # key_v = client.key('Visitors-loc')
+    # visitors_loc = datastore.Entity(key_v)
+    # visitors_loc["client_city"] = client_city
+    # visitors_loc["client_region"] = client_region
+    # visitors_loc["update_ts"] = datetime.now()
+    # visitors_loc["client_ip"] = client_ip
+    # client.put(visitors_loc)
 
     return (json.dumps({"message": "Success"}), 200, CORS_HEADERS)
 
