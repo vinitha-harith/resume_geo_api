@@ -38,8 +38,7 @@ def update_visitor_loc():
     # visitors_loc["client_ip"] = client_ip
     # client.put(visitors_loc)
 
-    # return (json.dumps({"message": tmp}), 200, CORS_HEADERS)
-    return "<p>Hello, World!</p>"
+    return (json.dumps({"message": tmp1}), 200, CORS_HEADERS)
 
 
 @app.route('/')
