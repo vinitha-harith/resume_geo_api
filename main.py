@@ -31,7 +31,11 @@ def update_visitor_loc():
     client_region = request.headers.get('X-client-Geo-region')
     client_city = request.headers.get('X-client-Geo-city')
     client_place = str(request.headers.get('X-client-place'))
-    client_lat, client_long = client_place.split(",")
+    if "," in client_place:
+        client_lat, client_long = client_place.split(",")
+    else:
+        client_lat = ""
+        client_long = ""
 
     key_v = client.key('Visitors-loc')
     visitors_loc = datastore.Entity(key_v)
